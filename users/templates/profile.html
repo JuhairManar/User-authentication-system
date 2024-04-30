@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user }}{% endblock %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+{% block body %}
+{% if messages %}
+    {% for m in messages %}
+        <h1 style="color: brown;">{{ m }}</h1>
+    {% endfor %}
+{% endif %}
+<h1>Welcome to Profile</h1>
+<h1>Mr. {{ user }}</h1>
+
+{% if user.profile_picture %}
+    <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+{% else %}
+    <img src="{% static 'path/to/default-profile-picture.png' %}" alt="Profile Picture">
+{% endif %}
+
+<br><br>
+<p><a href="{% url 'pass_change' %}">Change your password</a></p>
+<p><a href="{% url 'pass_change2' %}">Change your password without old pass</a></p>
+<p><a href="{% url 'change_data' %}">Change your data</a></p>
+
+{% endblock %}

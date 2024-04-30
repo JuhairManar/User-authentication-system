@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Signup{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+    {% if messages %}
+    {% for m in messages %}
+    <h1 style="color: brown;">{{m}}</h1>
+    {% endfor %}
+    {% endif %}
+    <h1>Welcome to Signup Page</h1>
+    {% load crispy_forms_tags %}
+    <div style="margin:auto;width:70%">
+      <form method="POST" style="width:50%;margin:auto" enctype="multipart/form-data">
+        <!-- {{form|crispy}} --> <!-- it will be repeated -->
+        {% csrf_token %} 
+        {% for fm in form %}
+        {{fm.label_tag}} <!-- It will show the labels like username,password -->
+        {{fm}}<!-- it will show the input box -->
+        {{fm.errors|striptags}}<!-- It will show the error (| striptags -- is a filter) -->
+        <br>
+        <!-- striptags will show the required,error message -->
+        {% endfor %}
+        <br>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <!-- value="submit" -->
+        <!--  <input class="btn btn-primary" type="submit" value="submit"> -->
+        <br>
+        <small>Already have an account ? <a href="{% url 'login' %}">login</a></small>
+      </form>
+    </div>
+{% endblock %}      

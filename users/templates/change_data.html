@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Change data{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+    {% if messages %}
+    {% for m in messages %}
+    <h1 style="color: brown;">{{m}}</h1>
+    {% endfor %}
+    {% endif %}
+    <h1>Change data</h1>
+    {% load crispy_forms_tags %}
+    <div style="margin:auto;width:70%">
+      <form method="POST" style="width:50%;margin:auto">
+        <!-- {{form|crispy}} --> <!-- it will be repeated -->
+        {% csrf_token %} 
+
+        {% if form.non_field_errors %}  <!-- this errors are not from field.these are from backend/database -->
+          {% for er in form.non_field_errors %}
+            <p class="bg-danger text-white p-3">{{er}}</p> <!-- p-3 means padding 3 --> <!-- to show the message -->
+          {% endfor %}
+        {% endif %}  
+
+        {% for fm in form %}
+        {{fm.label_tag}} <!-- It will show the labels like username,password -->
+        {{fm}}<!-- it will show the input box -->
+        {{fm.errors|striptags}}<!-- It will show the error (| striptags -- is a filter) -->
+        <!-- striptags will show the required,error message -->
+        {% endfor %}
+
+        <br>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <!-- value="submit" -->
+        <!--  <input class="btn btn-primary" type="submit" value="submit"> -->
+      </form>
+
+{% endblock %}  

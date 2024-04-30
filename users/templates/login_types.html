@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Signup{% endblock %}
+
+{% block body %}
+
+<a href="{% url 'doctor-login' %}" class="btn btn-primary">As Doctor</a>
+<a href="{% url 'patient-login' %}" class="btn btn-primary">As Patient</a>
+
+{% endblock %}
