@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Create Blog{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block style %}
+  <style>
+    body{
+      background-color:rgb(120, 153, 63);
+    }
+  </style>
+{% endblock%}
+
+{% block body %}
+
+    {% if messages %}
+    {% for m in messages %}
+    <h1 style="color: brown;">{{m}}</h1>
+    {% endfor %}
+    {% endif %}
+    <h1>Welcome Create Blog page</h1>
+    {% load crispy_forms_tags %}
+    <div style="margin:auto;width:70%">
+      <form method="POST" style="width:50%;margin:auto" enctype="multipart/form-data">
+        <!-- {{form|crispy}} --> <!-- it will be repeated -->
+        {% csrf_token %} 
+        {{form}}
+
+        <br>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+{% endblock %}      

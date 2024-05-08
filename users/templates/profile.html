@@ -2,27 +2,48 @@
 
 {% block title %}{{ user }}{% endblock %}
 
+{% block style %}
+<style>
+    body {
+        {% if user.title == 'Dr.' %}
+        background-image: url('https://media.istockphoto.com/id/638646884/photo/shared-medical-knowledge-benefits-his-coworkers-and-patients.jpg?s=612x612&w=0&k=20&c=z-PKKsMHeutyXs8EkCvyzUfB5K28LNlHi1ntgeUb4n0=');
+        background-size: cover;
+        background-position: center;
+        {% endif %}
+    }
+
+    .content-container {
+        margin: auto;
+        max-width: 600px; /* Adjust the max width as needed */
+        padding: 20px;
+    }
+</style>
+{% endblock %}
+
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> -->
 
 {% block body %}
-{% if messages %}
+
+<div class="content-container" style="background-color: rgb(173, 171, 33);">
+    {% if messages %}
     {% for m in messages %}
         <h1 style="color: brown;">{{ m }}</h1>
     {% endfor %}
-{% endif %}
-<h1>Welcome to Profile</h1>
-<h1>Mr. {{ user }}</h1>
+    {% endif %}
+    <h1>Welcome to Profile</h1>
+    <h1>{{ user.title }} {{ user.first_name }} {{ user.last_name }}</h1>
 
-{% if user.profile_picture %}
-    <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
-{% else %}
-    <img src="{% static 'path/to/default-profile-picture.png' %}" alt="Profile Picture">
-{% endif %}
+    {% if user.profile_picture %}
+        <img src="{{ user.profile_picture.url }}" alt="Profile Picture" width="300px" height="400px">
+    {% else %}
+        <img src="{% static 'path/to/default-profile-picture.png' %}" alt="Profile Picture">
+    {% endif %}
 
-<br><br>
-<p><a href="{% url 'pass_change' %}">Change your password</a></p>
-<p><a href="{% url 'pass_change2' %}">Change your password without old pass</a></p>
-<p><a href="{% url 'change_data' %}">Change your data</a></p>
+    <br><br>
+    <p><a href="{% url 'pass_change' %}">Change your password</a></p>
+    <p><a href="{% url 'pass_change2' %}">Change your password without old pass</a></p>
+    <p><a href="{% url 'change_data' %}">Change your data</a></p>
+</div>
 
 {% endblock %}

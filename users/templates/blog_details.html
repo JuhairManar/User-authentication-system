@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Blog Details - {{ blog.title }}{% endblock %}
+
+{% block body %}
+<div style="text-align: center;">
+    <div style="max-width: 600px; margin: auto;">
+        <img src="{{ blog.image.url }}" alt="{{ blog.title }}" style="max-width: 100%;">
+        <h2>{{ blog.title }}</h2>
+        <p><strong>Category:</strong> {{ blog.category }}</p>
+        <p><strong>Summary:</strong> {{ blog.summary | truncatewords:15}}</p>
+        <p><strong>Content:</strong> {{ blog.content | truncatewords:25}}</p>
+        <p><strong>Save as Draft:</strong> {{ blog.save_as_draft }}</p>
+    </div>
+</div>
+{% endblock %}
+
+|truncatewords:15

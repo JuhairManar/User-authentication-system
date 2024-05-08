@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Edit Blog{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block style %}
+  <style>
+    body {
+      background-color: rgb(120, 153, 63);
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+    {% if messages %}
+    {% for m in messages %}
+    <h1 style="color: brown;">{{ m }}</h1>
+    {% endfor %}
+    {% endif %}
+    <h1>Welcome to the Edit Blog page</h1>
+    {% load crispy_forms_tags %}
+    <div style="margin:auto;width:70%">
+      <form method="POST" style="width:50%;margin:auto" enctype="multipart/form-data" action="">
+        {% csrf_token %} 
+        {{ form|crispy }}
+
+        <br>
+        <button class="btn btn-primary" type="submit">Save Changes</button>
+      </form>
+    </div>
+{% endblock %}

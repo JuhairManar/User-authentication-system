@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^qzt9ssoe6fz9-1npel$6znuv7nind^!4p1ove1^aaxu*%pma$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+AUTH_USER_MODEL='users.UserProfile'
 
 
 # Application definition
@@ -57,6 +57,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'user_authentication.urls'
+
+CORS_ORIGIN_ALLOW_ALL = True
+CSRF_TRUSTED_ORIGINS = ['https://authentication-system-8vrr.onrender.com','https://*.127.0.0.1' ]
+CORS_ALLOW_ALL_ORIGINS: True
+ALLOWED_HOSTS = ["*"]
 
 TEMPLATES = [
     {

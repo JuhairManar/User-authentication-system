@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}My Blogs{% endblock %}
+
+{% block body %}
+<h1>My blog list</h1>
+
+<div style="margin:auto;width:70%">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Image</th>
+          <th scope="col">Category</th>
+          <th scope="col">Summary</th>
+          <th scope="col">Content</th>
+          <th scope="col">Save as draft</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="blog-list">
+        {% for blog in blogs %}
+        <tr>
+          <td>{{ blog.title }}</td>
+          <td><img src="{{ blog.image.url }}" alt="Blog Image" style="max-width: 150px; max-height: 150px;"></td>
+          <td>{{ blog.category}}</td>
+          <td>{{ blog.summary}}</td>
+          <td>{{ blog.content}}</td>
+          <td>{{ blog.save_as_draft}}</td>
+          <td>
+            <div class="d-flex">
+                <a href="{% url 'blog_details' pk=blog.pk %}" class="btn btn-success mx-1">View Full</a>
+                <a href="{% url 'edit_blog' pk=blog.pk %}" class="btn btn-primary  mx-1">Edit</a>
+                <a href="{% url 'delete_blog' pk=blog.pk %}" class="btn btn-danger  mx-1">Delete</a>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

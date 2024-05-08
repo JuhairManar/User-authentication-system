@@ -19,15 +19,29 @@ class RegisterForm(UserCreationForm):
     pincode = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'id': 'required'}))
 
     class Meta:
-        model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'profile_picture', 'address_line1', 'city', 'state', 'pincode']
+        model = UserProfile
+        fields = [ 'first_name', 'last_name', 'email', 'profile_picture','username','password1', 'password2',  'address_line1', 'city', 'state', 'pincode']
+        # fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'profile_picture', 'address_line1', 'city', 'state', 'pincode']
+        # fields='__all__'
 
 
 # for field in User._meta.get_fields():
 #     print(field.name)
 
+
+class Create_Blog(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.required = True
+        self.fields['save_as_draft'].required = False
+
+    class Meta:
+        model = Blog
+        fields = ['title', 'image', 'category', 'summary', 'content', 'save_as_draft']
+
 class ChangeUserData(UserChangeForm):
     password=None #it won't show password field
     class Meta:
-        model=User
-        fields=['username','first_name','last_name','email']
+        model=UserProfile
+        fields=['first_name', 'last_name', 'email', 'profile_picture','username',  'address_line1', 'city', 'state', 'pincode']
