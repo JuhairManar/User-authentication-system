@@ -92,6 +92,18 @@ DATABASES = {
     }
 }
 
+# To connect mysql
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'world',
+#         'USER': '<mysql-user>',
+#         'PASSWORD': '<mysql-password>',
+#         'HOST': '<mysql-host>',
+#         'PORT': '<mysql-port>',
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
