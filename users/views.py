@@ -181,15 +181,15 @@ def create_post(request):
 
 
 def blog_list(request):
-    categories = [category[0] for category in Blog.CATEGORIES]
+    categories =[category[0] for category in Blog.CATEGORIES]
     selected_category = request.GET.get('category')
 
     if selected_category and selected_category != 'All Categories':
-        blogs = Blog.objects.filter(category=selected_category, save_as_draft=False)
+        blogs=Blog.objects.filter(category=selected_category, save_as_draft=False)
     else:
-        blogs = Blog.objects.filter(save_as_draft=False)
+        blogs=Blog.objects.filter(save_as_draft=False)
 
-    return render(request, 'blog_list.html', {'blogs': blogs, 'categories': categories})
+    return render(request,'blog_list.html',{'blogs': blogs, 'categories': categories})
 
 
 def my_blogs(request):
