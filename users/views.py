@@ -227,7 +227,7 @@ def delete_blog(request, pk):
     if request.user != blog.userprofile:
         return redirect('blog_list')
     blog.delete()
-    return redirect('blog_list')
+    return redirect('my_blogs')
 
 def pass_change(request):
     if request.user.is_authenticated:
