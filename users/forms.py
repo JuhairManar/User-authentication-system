@@ -9,14 +9,14 @@ from .models import *
 # User._meta.get_fields()
 
 class RegisterForm(UserCreationForm):
-    first_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'id': 'required'}))
-    last_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'id': 'required'}))
-    email = forms.EmailField(max_length=100, widget=forms.EmailInput(attrs={'id': 'required'}))
-    profile_picture = forms.ImageField(required=True) 
-    address_line1 = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'id': 'required'}))
-    city = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'id': 'required'}))
-    state = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'id': 'required'}))
-    pincode = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'id': 'required'}))
+    first_name=forms.CharField(max_length=50, widget=forms.TextInput(attrs={'id': 'required'}))
+    last_name=forms.CharField(max_length=50, widget=forms.TextInput(attrs={'id': 'required'}))
+    email=forms.EmailField(max_length=100, widget=forms.EmailInput(attrs={'id': 'required'}))
+    profile_picture=forms.ImageField(required=True) 
+    address_line1=forms.CharField(max_length=100, widget=forms.TextInput(attrs={'id': 'required'}))
+    city=forms.CharField(max_length=50, widget=forms.TextInput(attrs={'id': 'required'}))
+    state=forms.CharField(max_length=50, widget=forms.TextInput(attrs={'id': 'required'}))
+    pincode=forms.CharField(max_length=10, widget=forms.TextInput(attrs={'id': 'required'}))
 
     class Meta:
         model = UserProfile
@@ -37,8 +37,8 @@ class Create_Blog(forms.ModelForm):
         self.fields['save_as_draft'].required = False
 
     class Meta:
-        model = Blog
-        fields = ['title', 'image', 'category', 'summary', 'content', 'save_as_draft']
+        model=Blog
+        fields=['title', 'image', 'category', 'summary', 'content', 'save_as_draft']
 
 class ChangeUserData(UserChangeForm):
     password=None #it won't show password field
